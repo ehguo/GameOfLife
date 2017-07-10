@@ -19,19 +19,56 @@ body {
   background: #D7D3C8;
 }
 
+.header {
+  color: #4D4E53;
+  font-size: 2em;
+  font-weight: 900;
+  font-variant: small-caps;
+}
+
+.rules {
+  color: #4D4E53;
+  font-size: 1em;
+  font-weight: 900;
+  font-variant: small-caps;
+}
+
+.rule-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: fixed;
+
+  padding: 5px;
+  width: 600px;
+  height: 250px;
+
+  background: #D7D3C8;
+  border: 3px solid #C13832;
+  box-shadow: 2px 2px 5px #4D4E53;
+
+  font-size: 0.75em;
+}
+
+.rule-text {
+  margin: 25px;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
 
-  width: 500px;
-  height: 500px;
+  width: 765px;
+  height: 765px;
+
   border: 3px solid #C13832;
   box-shadow: 2px 2px 5px #4D4E53;
 }
 
 .cell {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
 
   box-sizing: border-box;
   border: 1px solid #999999;
@@ -41,8 +78,8 @@ body {
   background: #4D4E53;
 }
 
-.start {
-  margin: 5px;
+.button {
+  margin-top: 10px;
   padding: 5px 15px;
   background: transparent;
   border: 2px solid #C13832;
@@ -52,4 +89,20 @@ body {
   font-size: 1.25em;
   font-weight: 900;
   font-variant: small-caps;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+
+  width: 500px;
+  height: 500px;
+
+  background: #D7D3C8;
+  border: 3px solid #C13832;
+  box-shadow: 2px 2px 5px #4D4E53;
 }
