@@ -77,8 +77,10 @@ function createCells() {
     const $cell = $(e.target);
     const id = e.target.id;
 
+    console.log(id, getLivingNeighbors(+id))
     cellStatus[id] = cellStatus[id] ? false : true;
     $cell.toggleClass('alive');
+
   }
 }
 
@@ -94,8 +96,10 @@ function runLife() {
   if (interval) {
     clearInterval(interval);
     interval = null;
+    $('.grid').css('border-color', '#C13832');
   } else {
     interval = setInterval(determineFate, 500);
+    $('.grid').css('border-color', '#007243');
   }
 }
 
@@ -127,14 +131,28 @@ function getLivingNeighbors(id) {
   let rowLen = 51;
   let adj = 0;
 
-  if (cellStatus[id - rowLen - 1]) adj++;
-  if (cellStatus[id - rowLen]) adj++;
-  if (cellStatus[id - rowLen + 1]) adj++;
-  if (cellStatus[id + 1]) adj++;
-  if (cellStatus[id - 1]) adj++;
-  if (cellStatus[id + rowLen - 1]) adj++;
-  if (cellStatus[id + rowLen]) adj++;
-  if (cellStatus[id + rowLen + 1]) adj++;
+  if (id % rowLen === 0) {
+    if (cellStatus[id - rowLen]) adj++;
+    if (cellStatus[id - rowLen + 1]) adj++;
+    if (cellStatus[id + 1]) adj++;
+    if (cellStatus[id + rowLen]) adj++;
+    if (cellStatus[id + rowLen + 1]) adj++;
+  } else if (id % rowLen === rowLen - 1) {
+    if (cellStatus[id - rowLen - 1]) adj++;
+    if (cellStatus[id - rowLen]) adj++;
+    if (cellStatus[id - 1]) adj++;
+    if (cellStatus[id + rowLen - 1]) adj++;
+    if (cellStatus[id + rowLen]) adj++;
+  } else {
+    if (cellStatus[id - rowLen - 1]) adj++;
+    if (cellStatus[id - rowLen]) adj++;
+    if (cellStatus[id - rowLen + 1]) adj++;
+    if (cellStatus[id - 1]) adj++;
+    if (cellStatus[id + 1]) adj++;
+    if (cellStatus[id + rowLen - 1]) adj++;
+    if (cellStatus[id + rowLen]) adj++;
+    if (cellStatus[id + rowLen + 1]) adj++;
+  }
 
   return adj;
 }
